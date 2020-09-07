@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        
+    </style>
 </head>
 <body>
-    <div id="app">
-        {{ mrXjl.height }}
+    <div id="app" >
+        <div v-text="msg1">{{ msg }}
+
+            <div>{{ msg }}</div>
+        </div>
+        
 
     </div>
     <script src="./vue.js"></script>
-    <script src="./observer.js"></script>
+ 
     <script>
         const vm = new Vue({
             el: "#app",
             data:{
                 msg:"xjl老帅的了",
-                mrXjl:{
-                    age:18,
-                    weight:70,
-                }
+                msg1:"hznizalaochoudele"
+                
             }
         });
     </script>
