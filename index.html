@@ -10,10 +10,13 @@
 </head>
 <body>
     <div id="app" >
-        <div v-text="msg1">{{ msg }}
-
-            <div>{{ msg }}</div>
-        </div>
+        <template v-if="show">
+            <div >{{ msg }}   </div>
+            <div>韩胖子老丑了</div>
+               
+        </template>
+      
+     
         
 
     </div>
@@ -24,7 +27,8 @@
             el: "#app",
             data:{
                 msg:"xjl老帅的了",
-                msg1:"hznizalaochoudele"
+                show:true,
+                type:"a"
                 
             }
         });
