@@ -10,8 +10,9 @@
 </head>
 <body>
     <div id="app" >
-        <button v-on:click = "addCounter(3,$event)">点击+1</button>
-        <p>按钮被点击了{{ counter }}次</p>
+        <div @click="alert('div')" :style="{backgroundColor:'red'}">
+            <button @click.stop = "alert('button')">点击</button>
+        </div>
                
         </template>
       
@@ -31,6 +32,10 @@
                 
             },
             methods:{
+                alert(str){
+                    alert(str)
+
+                },
                 addCounter(n,e){
                     this.counter += n;
                     console.log(e.target)
