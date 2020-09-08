@@ -10,7 +10,8 @@
 </head>
 <body>
     <div id="app" >
-        <div v-bind:a="type">{{  msg }}</div>
+        <button v-on:click = "addCounter(3,$event)">点击+1</button>
+        <p>按钮被点击了{{ counter }}次</p>
                
         </template>
       
@@ -25,8 +26,15 @@
             el: "#app",
             data:{
                 msg:"xjl老帅的了",
-               type:"c"
+               type:"c",
+               counter:0
                 
+            },
+            methods:{
+                addCounter(n,e){
+                    this.counter += n;
+                    console.log(e.target)
+                }
             }
         });
     </script>
