@@ -10,9 +10,7 @@
 </head>
 <body>
     <div id="app" >
-        <template v-if="show">
-            <div >{{ msg }}   </div>
-            <div>韩胖子老丑了</div>
+        <div v-bind:a="type">{{  msg }}</div>
                
         </template>
       
@@ -27,8 +25,7 @@
             el: "#app",
             data:{
                 msg:"xjl老帅的了",
-                show:true,
-                type:"a"
+               type:"c"
                 
             }
         });
