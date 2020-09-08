@@ -10,9 +10,15 @@
 </head>
 <body>
     <div id="app" >
-        <div @click="alert('div')" :style="{backgroundColor:'red'}">
-            <button @click.stop = "alert('button')">点击</button>
-        </div>
+        <ul>
+            <li v-for="(person,index) in persons" :key="person.name">{{
+                person.name    
+            }}
+            <input type="text">
+            <button @click="handleClick(index)">下移</button>
+        
+        </li>
+        </ul>
                
         </template>
       
@@ -26,21 +32,24 @@
         const vm = new Vue({
             el: "#app",
             data:{
-                msg:"xjl老帅的了",
-               type:"c",
-               counter:0
+               persons:[
+                   {name:"xjl",age:18},
+                   {name:"hz",age:20},
+                   {name:"sjm",age:22},
+                   {name:"lyy",age:24},
+               ]
                 
             },
             methods:{
-                alert(str){
-                    alert(str)
+                handleClick(index){
+                    console.log("ahah",index)
+                    const obj = this.persons.splice(index,1);
+                    this.persons.splice(index+1,0,...obj)
 
-                },
-                addCounter(n,e){
-                    this.counter += n;
-                    console.log(e.target)
+
                 }
             }
+           
         });
     </script>
 </body>
