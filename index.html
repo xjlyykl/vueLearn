@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    
-    
     <div id="app">
-        <input type="text" v-model.number.lazy="num1">
+        <div class="area" v-for="area in 2">
+            <h2>{{ area === 1? "提问区":"回答展示区" }}</h2>
+            <ul>
+                <li v-for="question in questionList" :key="question.id">
+                    <h3>{{ question.title}}</h3>
+                    <div>
+                        <input type="text" v-if="area === 1">
+                        <span v-else>回答</span>
+                    </div>
+                    <div
+                        v-for="choose in question.chooseList"
+                        :key = "choose"
+                    >
+                    <input type="raido">
 
-        <select v-model="type" >
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-        </select>
-        <input type="text" v-model.number.lazy = "num2">
-        <button @click="handleClick">=</button>
-        <span>{{result}}</span>
+                    </div>
+                </li>
+            </ul>
 
-
+        </div>
     </div>
     <script src="./vue.js"></script>
     <script>
@@ -29,38 +35,49 @@
         const vm = new Vue({
             el:"#app",
             data:{
-                num1:0,
-                num2:0,
-                result:0,
-                type:'+'
-            },
-            methods:{
-                handleClick(){
-                    const {type ,num1,num2} = this;
-                    switch(type){
-                        case "+":
-                            this.result = num1+ num2;
-                            break;
-                        case "-":
-                            this.result = num1 - num2;
-                            break;
-                        case "*":
-                            this.result = num1 * num2;
-                            break;
-                        case "/":
-                            this.result = num1 /num2;
-                            break;
-                        default:
-                            return;
-                    }
-                }
+                     questionList: [
+  {
+    type: 'short',
+    title: '1.请问你的姓名是？',
+    chooseList: null,
+    answer: '',
+    id: 0
+  },
+  {
+    type: 'single',
+    title: '2.请问您的性别是？',
+    chooseList: [
+      '男',
+      '女',
+      '保密',
+    ],
+    answer: '',
+    id: 1,
+  },
+  {
+    type: 'multiple',
+    title: '3. 请选择您的兴趣爱好：',
+    chooseList: [
+      '看书',
+      '游泳',
+      '跑步',
+      '看电影',
+      '听音乐',
+    ],
+    answer: [],
+    id: 2,
+  },
+  {
+    type: 'long',
+    title: '4. 请介绍一下自己:',
+    chooseList: null,
+    answer: '',
+    id: 3,
+  },
+]
             }
         })
 
     </script>
-
-  
-
-
 </body>
 </html>
