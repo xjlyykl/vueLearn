@@ -24,7 +24,7 @@
     </ul>
   </div>
   <script src="./vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     const vm = new Vue({
       el:"#app",
@@ -36,25 +36,18 @@
       },
       methods:{
         handleUpload(){
-          this.$http.post('https://developer.duyiedu.com/vue/setUserInfo',
-          {
-            name:this.name,
-            mail:this.mail
-          }).then(res=>{
-            this.msg = res.body.msg;
-            console.log(res)
-          }).catch(error=>{
-            console.log(error)
-            this.msg=error.body.msg;
-          })
+        
           console.log(this.name,this.mail)
          
         },
         handleShow(){
-          this.$http.get('https://developer.duyiedu.com/vue/getUserInfo').then
-          (res=>{
+          axios({
+            method:"get",
+            baseURL:'https://developer.duyiedu.com/vue',
+            url:"/getUserInfo"
+          }).then(res=>{
             console.log(res)
-            this.personList=res.body.data
+            this.personList = res.data.data
           })
         }
       },
