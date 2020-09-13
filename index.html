@@ -8,58 +8,18 @@
 </head>
 <body>
   <div id="app">
-    <div class="username">
-      <input type="text" placeholder="用户名" v-model="name">
-    </div>
-    <div class="mail">
-      <input type="text" placeholder="邮箱" v-model="mail">
-    </div>
-    <div class="upload-btn" @click="handleUpload">上传</div>
-    <div class="show-btn" @click="handleShow">显示人物信息</div>
-    <ul class="person-list" v-if="personList.length !== 0">
-      <li class="person"  v-for="person in personList">
-        <span>{{person.name}}</span>
-        <span>{{person.mail}}</span>
-      </li>
-    </ul>
+    
   </div>
   <script src="./vue.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
   <script>
     const vm = new Vue({
       el:"#app",
       data:{
-        name:"",
-        mail:"",
-        msg:"",
-        personList:[]
-      },
-      methods:{
-        handleUpload(){
         
-          console.log(this.name,this.mail)
-         
-        },
-        handleShow(){
-          axios({
-            method:"get",
-            baseURL:'https://developer.duyiedu.com/vue',
-            url:"/getUserInfo"
-          }).then(res=>{
-            console.log(res)
-            this.personList = res.data.data
-          })
-        }
       },
-      watch:{
-        msg(){
-          if(this.msg === ""){
-            return;
-          }
-          alert(this.msg);
-          this.msg= ""
-        }
-      }
+      template:"<div>haha</div>"
+     
     })
 
   </script>
